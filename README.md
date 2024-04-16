@@ -1,2 +1,2 @@
 # diner
-diner app
+web site for my diner
