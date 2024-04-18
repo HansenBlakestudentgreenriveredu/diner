@@ -50,46 +50,85 @@ $f3->route('GET /menus/dinner', function() {
     echo $view->render('views/dinner-menu.html');
 });
 
-// order1 menu
+// Order Summary
+$f3->route('GET /summary', function($f3) {
+
+    var_dump ( $f3->get('SESSION') );
+
+    // Render a view page
+    $view = new Template();
+    echo $view->render('views/order-summary.html');
+});
+
+// Order Form Part I
 $f3->route('GET|POST /order1', function($f3) {
     //echo '<h1>My Breakfast Menu</h1>';
 
-    // If form submitted
+    // If the form has been posted
     if ($_SERVER['REQUEST_METHOD'] == "POST") {
 
-        // Get data from post array
+        //echo "<p>You got here using the POST method</p>";
+        //var_dump ($_POST);
+
+        // Get the data from the post array
         $food = $_POST['food'];
         $meal = $_POST['meal'];
 
-        // If data is valid
+        // If the data valid
         if (true) {
 
-            // Add data to sessions array
+            // Add the data to the session array
             $f3->set('SESSION.food', $food);
             $f3->set('SESSION.meal', $meal);
 
-            // Send user to the next form
+            // Send the user to the next form
             $f3->reroute('order2');
         }
         else {
-            // temp
+            // Temporary
             echo "<p>Validation errors</p>";
         }
     }
+
     // Render a view page
     $view = new Template();
     echo $view->render('views/order1.html');
 });
 
-// order2 menu                     make $f3 an annonoumas function
-$f3->route('GET /order2', function($f3) {
+// Order Form Part II
+$f3->route('GET|POST /order2', function($f3) {
 
     var_dump ( $f3->get('SESSION') );
-    //echo '<h1>My Breakfast Menu</h1>';
+
+    // If the form has been posted
+    if ($_SERVER['REQUEST_METHOD'] == "POST") {
+
+        //var_dump($_POST);
+        // Get the data from the post array
+        if (isset($_POST['conds']))
+            $condiments = implode(", ", $_POST['conds']);
+        else
+            $condiments = "None selected";
+
+        // If the data valid
+        if (true) {
+
+            // Add the data to the session array
+            $f3->set('SESSION.condiments', $condiments);
+
+            // Send the user to the next form
+            $f3->reroute('summary');
+        }
+        else {
+            // Temporary
+            echo "<p>Validation errors</p>";
+        }
+    }
 
     // Render a view page
     $view = new Template();
     echo $view->render('views/order2.html');
 });
+
 // Run Fat-Free
 $f3->run();
