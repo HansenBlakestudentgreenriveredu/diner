@@ -13,8 +13,8 @@
             <label class="col-sm-4 control-label">Select your Condiments</label>
 
             <div class="col-sm-4">
-                <repeat>
-                    <label><input type="checkbox" name="conds[]" value="{{ @condiment }}">{{ unfirst(@condiment) }}</label><br>
+                <repeat group="{{ @condiments }}" value="{{ @condiment }}">
+                    <label><input type="checkbox" name="conds[]" value="{{ @condiment }}"> {{ ucfirst(@condiment) }}</label><br>
                 </repeat>
             </div>
         <br>

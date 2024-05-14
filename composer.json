@@ -1,13 +1,19 @@
 {
-  "name": "tostrander/328/diner",
+  "name": "HansenBlakestudentgreenriveredu/328/diner",
   "authors": [
     {
-      "name": "Tina Ostrander",
-      "email": "tostrander@greenriver.edu"
+      "name": "Blake Hansen",
+      "email": "hansen.blake@student.greenriver.edu"
     }
   ],
   "require":
   {
     "bcosca/fatfree-core": "dev-master"
-  }
+  },
+  "autoload":
+  {
+  "classmap": [
+    "classes/"
+  ]
+}
 }
