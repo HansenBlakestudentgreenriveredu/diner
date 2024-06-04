@@ -1,7 +1,6 @@
 <?php
 
-/** Order class represents diner order  */
-
+    /** Order class represents a diner order */
 class Order
 {
     private $_food;
@@ -10,7 +9,7 @@ class Order
 
     /**
      * Constructor creates an Order object
-     * @param $_food the food user ordered
+     * @param $_food the food the user ordered
      * @param $_meal the selected meal
      * @param $_condiments the selected condiments
      */
@@ -38,7 +37,8 @@ class Order
     }
 
     /**
-     * @return string|the
+     * getMeal returns a meal selection
+     * @return string|the meal that was ordered
      */
     public function getMeal()
     {
@@ -54,7 +54,8 @@ class Order
     }
 
     /**
-     * @return string|the
+     * Returns the selected condiments
+     * @return array An array of condiments
      */
     public function getCondiments()
     {
@@ -68,15 +69,4 @@ class Order
     {
         $this->_condiments = $condiments;
     }
-
 }
-//echo "<pre>";
-//$order = new Order('Burger', 'Lunch', ['Ketchup']);
-//var_dump($order);
-//
-//$order2 = new Order();
-//$order2->setFood('wings');
-//$order2->setMeal('dinner');
-//$order2->setCondiments('salsa', 'quac');
-//var_dump($order2);
-//echo "</pre>";

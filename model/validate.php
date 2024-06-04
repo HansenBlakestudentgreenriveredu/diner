@@ -1,27 +1,20 @@
 <?php
 
-/* Validate data */
+/* Validate data for the diner app
+ */
+class Validate
+{
+    // TODO: Add PHP doc blocks
 
-// return true if meals is valid
-function validMeals($meals){
-    return strlen(trim($meals)) >= 3;
-}
-function validMealss($meals){
-    return in_array($meals, getMeals());
-}
+    // Return true if food contains at least 3 chars
+    static function validFood($food)
+    {
+        return strlen(trim($food)) >= 3;
+    }
 
-// return true if sides is valid
-function validSides($sides){
-    return strlen(trim($sides)) >= 3;
-}
-function validSidess($sides){
-    return in_array($sides, getSides());
-}
-
-// return true if drinks is valid
-function validDrinks($drinks){
-    return strlen(trim($drinks)) >= 3;
-}
-function validDrinkss($drinks){
-    return in_array($drinks, getDrinks());
+    // Return true if meal is valid
+    static function validMeal($meal)
+    {
+        return in_array($meal, DataLayer::getMeals());
+    }
 }
